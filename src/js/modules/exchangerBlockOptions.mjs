@@ -18,12 +18,13 @@ export function exchangerBlockOptions() {
     });
 
     exchangeForm.addEventListener('submit', onExchangeFormSubmit);
-
-    let BTC = 0;
-
+    
     setInterval(() => {
-        exchange('BTC').then((data) => BTC = data.data.rates['USDT']);
-        btcRateBlock.innerHTML = `1 BTC ≈ $${BTC}`;
+        exchange('BTC').then((data) => {
+            let BTC;
+            BTC = data.data.rates['USDT']
+            btcRateBlock.innerHTML = `1 BTC ≈ $${BTC}`;
+        });
     }, 5000);
 }
 
